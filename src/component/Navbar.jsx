@@ -1,8 +1,17 @@
+"use client"
 import React from 'react';
 import NavLink from './NavLink';
 import { FaCircleUser } from 'react-icons/fa6';
+import { authClient, signOut } from '@/lib/auth-client';
+import Link from 'next/link';
 
 const Navbar = () => {
+
+    const { data: session } = authClient.useSession()
+    console.log(session)
+
+    const user = session?.user
+
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 max-w-[80%] mx-auto py-4'>
             <div>
@@ -12,8 +21,15 @@ const Navbar = () => {
             <NavLink></NavLink>
             
             <div className='flex items-center gap-3 justify-end'>
+                {/* <h2 className='text-4xl'>{user? user.image : <FaCircleUser />}</h2> */}
                 <h2 className='text-4xl'><FaCircleUser /></h2>
-                <button className='btn bg-black text-white px-7'>Login</button>
+                {/* <button className={`btn ${user?"btn-info text-white":"bg-black text-white"} px-7`}>{user? "LogOut":"Login"}</button> */}
+
+                {
+                    user? 
+                    <button onClick={async() => await authClient.signOut()} className='btn btn-info text-white'>LogOut</button>
+                    : <Link href={'/login'} className='btn bg-black text-white'>Login</Link>
+                }
             </div>
         </div>
     );

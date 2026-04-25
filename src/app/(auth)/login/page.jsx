@@ -1,19 +1,33 @@
 "use client"
 import Navbar from '@/component/Navbar';
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 const page = () => {
 
     const {register,handleSubmit,watch,formState: {errors}} = useForm()
 
-    const onSubmit = (data) => {
+    const [show, setShow] = useState(false)
+
+    const onSubmit = async (v) => {
+        console.log(v)
+
+        const { data, error } = await authClient.signIn.email({
+            email: v.email,
+            password: v.password,
+            rememberMe: true,
+            callbackURL: "/",
+        });
+
         console.log(data)
+
     }
 
-    console.log(watch("email"))
-    console.log(watch("password"))
+    // console.log(watch("email"))
+    // console.log(watch("password"))
     
 
     return (
@@ -29,7 +43,7 @@ const page = () => {
                     {errors.email && <p className='text-red-600 font-semibold'>{errors.email.message} </p>}
 
                     <label className="label text-black font-semibold text-base">Password</label>
-                    <input type="password" {...register("password", { required: "password Filed required" })} className="input w-full" placeholder="Enter your password" />
+                    <input type={show ? "text":"password"} {...register("password", { required: "password Filed required" })} className="input w-full" placeholder="Enter your password" /> <span onClick={() => setShow(!show)}>{show?<FaEye/>:<FaEyeSlash/>}</span>
                     {errors.password && <p className='text-red-600 font-semibold'> {errors.password.message}</p>}
 
                     <button type='submit' className="btn btn-neutral my-4">Login</button>
