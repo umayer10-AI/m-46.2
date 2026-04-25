@@ -1,5 +1,6 @@
 "use client"
 import Navbar from '@/component/Navbar';
+import { authClient } from '@/lib/auth-client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -7,8 +8,26 @@ const page = () => {
 
     const {register,handleSubmit,watch,formState: {errors}} = useForm()
     
-        const onSubmit = (data) => {
-            console.log(data)
+        const onSubmit = async (v) => {
+            console.log(v)
+
+            const { data, error } = await authClient.signUp.email({
+                name: v.name,
+                email: v.email,
+                password: v.password,
+                image: v.url,
+                callbackURL: "/",
+            });
+
+            console.log(data,error)
+
+            if(data){
+                alert("Data Successfully")
+            }
+            if(error){
+                alert("Undefined")
+            }
+
         }
     
         // console.log(watch("email"))
