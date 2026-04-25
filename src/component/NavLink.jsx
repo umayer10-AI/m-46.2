@@ -8,7 +8,7 @@ const NavLink = () => {
     const p = usePathname()
 
     return (
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 justify-center'>
             <Link href={'/'} className={p==='/'? "btn btn-accent":"btn"}>Home</Link>
             <Link href={'/about'} className={p==='/about'? "btn btn-accent":"btn"}>About</Link>
             <Link href={'/career'} className={p==='/career'? "btn btn-accent":"btn"}>Career</Link>
