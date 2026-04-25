@@ -1,9 +1,12 @@
+import Category from '@/component/Category';
 import React from 'react';
 
 const page = () => {
   return (
     <div>
         <h2 className='text-3xl font-bold text-center my-5'>Home Page</h2>
+        <Category></Category>
+        
     </div>
   );
 };

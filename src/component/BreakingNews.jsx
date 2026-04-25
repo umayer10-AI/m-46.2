@@ -19,9 +19,9 @@ const news = [
 
 const BreakingNews = () => {
     return (
-        <div className='max-w-[80%] mx-auto flex gap-3 bg-gray-100 py-2 px-2'>
+        <div className='max-w-[80%] mx-auto flex gap-3 bg-gray-100 py-2 px-2 rounded-xl'>
             <button className='btn bg-red-600 text-white'>Latest</button>
-                <Marquee>
+                <Marquee pauseOnHover={true} speed={50}>
                     <div className='font-semibold flex gap-5'>
                             {
                                 news.map(v => <h2 key={v._id}>{v.title}</h2>)
