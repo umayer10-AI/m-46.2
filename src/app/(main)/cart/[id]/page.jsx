@@ -9,7 +9,7 @@ const page = async ({params}) => {
     console.log(id)
 
     return (
-        <div className='grid grid-cols-5 max-w-[80%] mx-auto'>
+        <div className='grid grid-cols-5 max-w-[80%] mx-auto gap-5'>
             {/* <h2 className='text-3xl font-bold text-center my-5'>Home Page</h2> */}
             <Category></Category>
 
