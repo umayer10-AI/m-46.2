@@ -53,7 +53,7 @@ const MidSide = async ({id}) => {
               className="w-full h-60 object-cover rounded-lg"
             />
 
-            {/* Details */}
+
             <p className="text-gray-500 text-sm">
               {v.details.slice(0, 150)}...
               <span className="text-orange-500 font-semibold cursor-pointer ml-1">
@@ -61,9 +61,8 @@ const MidSide = async ({id}) => {
               </span>
             </p>
 
-            {/* Footer */}
             <div className="flex items-center justify-between border-t pt-3">
-              {/* rating */}
+
               <div className="flex items-center gap-2 text-orange-400">
                 <FaStar />
                 <FaStar />
@@ -72,11 +71,10 @@ const MidSide = async ({id}) => {
                 <FaStar />
                 <span className="text-gray-600 ml-1">{v.rating.number}</span>
               </div>
-              <Link href={`/news/${v._id}`} className="btn btn-primary">
+              <Link href={`/my/${v._id}`} className="btn btn-primary">
                 See Details
               </Link>
 
-              {/* views */}
               <div className="flex items-center gap-2 text-gray-500">
                 <FaEye />
                 <span>{v.total_view || 0}</span>
