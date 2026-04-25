@@ -1,3 +1,6 @@
+import Headers from '@/component/Headers';
+import Press from '@/component/Press';
+import RightSide from '@/component/RightSide';
 import { allNews } from '@/lib/fetching';
 import Link from 'next/link';
 import React from 'react';
@@ -12,7 +15,7 @@ const page = async ({params}) => {
 
     return (
         <div className='max-w-[80%] mx-auto mb-20'>
-            {/* <Header></Header> */}
+            <Headers></Headers>
             <div className='grid grid-cols-4 gap-5'>
                 <div className='col-span-3'>
                     <h2 className='text-xl font-bold mb-3'>Dragon News</h2>
@@ -20,10 +23,11 @@ const page = async ({params}) => {
                         <img src={data.image_url} alt="logo" className='w-full h-80 rounded-2xl object-cover' />
                         <h2 className='text-2xl font-bold'>{data.title}</h2>
                         <h2>{data.details}</h2>
-                        <Link href={'/cart/01'} className='btn btn-error text-white bg-red-600'><FaArrowLeftLong /> All news in this category</Link>
+                        {/* <Link href={`/cart/01`} className='btn btn-error text-white bg-red-600'><FaArrowLeftLong /> All news in this category</Link> */}
+                        <Press></Press>
                     </div>
                 </div>
-                {/* <RightSide></RightSide> */}
+                <RightSide></RightSide>
             </div>
         </div>
     );
