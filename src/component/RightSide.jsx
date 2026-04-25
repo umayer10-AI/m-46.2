@@ -1,5 +1,9 @@
 import React from "react";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import img1 from "../assets/swimming.png"
+import img2 from "../assets/class.png"
+import img3 from "../assets/playground.png"
+import Image from "next/image";
 
 const RightSide = () => {
   return (
@@ -71,13 +75,19 @@ const RightSide = () => {
           Login with Facebook
         </button>
       </div>
-      <div className="my-5">
+      <div className="my-10">
         <h2 className="text-xl font-bold mb-3">Find Us On</h2>
         <div>
           <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-600 btn"><BsFacebook className="text-blue-600"/>Facebook</h2>
           <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-600 btn"><BsTwitter className="text-blue-400"/>Twitter</h2>
           <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-600 btn"><BsInstagram className="text-pink-600"/>Instagram</h2>
         </div>
+      </div>
+      <div className="my-10 bg-gray-100 p-3">
+        <h2 className="text-xl font-bold mb-3">Q-Zone</h2>
+          <Image src={img1} alt="logo"></Image>
+          <Image src={img2} alt="logo"></Image>
+          <Image src={img3} alt="logo"></Image>
       </div>
     </div>
   );
